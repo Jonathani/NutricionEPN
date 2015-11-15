@@ -5,8 +5,11 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the alimentos database table.
+ * El archivo contiene diferentes funciones, ya sea matematicas, de fechas etc.
  * 
+ * @FechaCreacion: 14/11/2015
+ * @UsuarioCreacion: Jonathan Imbaquingo
+ * @Version: 1.0
  */
 @Entity
 @Table(name="alimentos")
