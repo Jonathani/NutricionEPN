@@ -5,11 +5,10 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the medicamentos database table.
+ * The persistent class for the medicamento database table.
  * 
  */
 @Entity
-@Table(name="medicamentos")
 @NamedQuery(name="Medicamento.findAll", query="SELECT m FROM Medicamento m")
 public class Medicamento implements Serializable {
 	private static final long serialVersionUID = 1L;

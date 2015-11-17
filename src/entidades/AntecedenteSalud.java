@@ -21,10 +21,10 @@ public class AntecedenteSalud implements Serializable {
 
 	private String descripcion;
 
-	//bi-directional many-to-one association to DatosMedico
+	//bi-directional many-to-one association to Paciente
 	@ManyToOne
-	@JoinColumn(name="ID_DATOS_MEDICOS")
-	private DatosMedico datosMedico;
+	@JoinColumn(name="ID_PACIENTE")
+	private Paciente paciente;
 
 	public AntecedenteSalud() {
 	}
@@ -45,12 +45,12 @@ public class AntecedenteSalud implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public DatosMedico getDatosMedico() {
-		return this.datosMedico;
+	public Paciente getPaciente() {
+		return this.paciente;
 	}
 
-	public void setDatosMedico(DatosMedico datosMedico) {
-		this.datosMedico = datosMedico;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
 }

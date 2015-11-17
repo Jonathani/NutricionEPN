@@ -23,19 +23,14 @@ public class FamiliarPaciente implements Serializable {
 	@Column(name="PARENTEZCO_PACIENTE")
 	private String parentezcoPaciente;
 
-	//bi-directional many-to-one association to DatosMedico
+	//bi-directional many-to-one association to Paciente
 	@ManyToOne
-	@JoinColumn(name="ID_DATOS_MEDICOS")
-	private DatosMedico datosMedico;
+	@JoinColumn(name="ID_PACIENTE")
+	private Paciente paciente;
 
-	//bi-directional many-to-one association to PatologiasAsociada
-	@ManyToOne
-	@JoinColumn(name="ID_PATOLOGIAS_ASOCIADAS")
-	private PatologiasAsociada patologiasAsociada;
-
-	//bi-directional many-to-one association to PatologiasAsociada
+	//bi-directional many-to-one association to PatologiaAsociada
 	@OneToMany(mappedBy="familiarPaciente")
-	private List<PatologiasAsociada> patologiasAsociadas;
+	private List<PatologiaAsociada> patologiaAsociadas;
 
 	public FamiliarPaciente() {
 	}
@@ -56,42 +51,34 @@ public class FamiliarPaciente implements Serializable {
 		this.parentezcoPaciente = parentezcoPaciente;
 	}
 
-	public DatosMedico getDatosMedico() {
-		return this.datosMedico;
+	public Paciente getPaciente() {
+		return this.paciente;
 	}
 
-	public void setDatosMedico(DatosMedico datosMedico) {
-		this.datosMedico = datosMedico;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
-	public PatologiasAsociada getPatologiasAsociada() {
-		return this.patologiasAsociada;
+	public List<PatologiaAsociada> getPatologiaAsociadas() {
+		return this.patologiaAsociadas;
 	}
 
-	public void setPatologiasAsociada(PatologiasAsociada patologiasAsociada) {
-		this.patologiasAsociada = patologiasAsociada;
+	public void setPatologiaAsociadas(List<PatologiaAsociada> patologiaAsociadas) {
+		this.patologiaAsociadas = patologiaAsociadas;
 	}
 
-	public List<PatologiasAsociada> getPatologiasAsociadas() {
-		return this.patologiasAsociadas;
+	public PatologiaAsociada addPatologiaAsociada(PatologiaAsociada patologiaAsociada) {
+		getPatologiaAsociadas().add(patologiaAsociada);
+		patologiaAsociada.setFamiliarPaciente(this);
+
+		return patologiaAsociada;
 	}
 
-	public void setPatologiasAsociadas(List<PatologiasAsociada> patologiasAsociadas) {
-		this.patologiasAsociadas = patologiasAsociadas;
-	}
+	public PatologiaAsociada removePatologiaAsociada(PatologiaAsociada patologiaAsociada) {
+		getPatologiaAsociadas().remove(patologiaAsociada);
+		patologiaAsociada.setFamiliarPaciente(null);
 
-	public PatologiasAsociada addPatologiasAsociada(PatologiasAsociada patologiasAsociada) {
-		getPatologiasAsociadas().add(patologiasAsociada);
-		patologiasAsociada.setFamiliarPaciente(this);
-
-		return patologiasAsociada;
-	}
-
-	public PatologiasAsociada removePatologiasAsociada(PatologiasAsociada patologiasAsociada) {
-		getPatologiasAsociadas().remove(patologiasAsociada);
-		patologiasAsociada.setFamiliarPaciente(null);
-
-		return patologiasAsociada;
+		return patologiaAsociada;
 	}
 
 }

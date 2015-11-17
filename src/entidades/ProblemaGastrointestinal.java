@@ -5,19 +5,19 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the intolerancias_alergicas database table.
+ * The persistent class for the problema_gastrointestinal database table.
  * 
  */
 @Entity
-@Table(name="intolerancias_alergicas")
-@NamedQuery(name="IntoleranciasAlergica.findAll", query="SELECT i FROM IntoleranciasAlergica i")
-public class IntoleranciasAlergica implements Serializable {
+@Table(name="problema_gastrointestinal")
+@NamedQuery(name="ProblemaGastrointestinal.findAll", query="SELECT p FROM ProblemaGastrointestinal p")
+public class ProblemaGastrointestinal implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_INTOLERANCIAS_ALERGICAS")
-	private int idIntoleranciasAlergicas;
+	@Column(name="ID_PROBLEMAS_GASTROINTESTINALES")
+	private int idProblemasGastrointestinales;
 
 	private String descripcion;
 
@@ -26,15 +26,15 @@ public class IntoleranciasAlergica implements Serializable {
 	@JoinColumn(name="ID_ANTECEDENTES_ALIMENTARIOS")
 	private AntecedentesAlimentario antecedentesAlimentario;
 
-	public IntoleranciasAlergica() {
+	public ProblemaGastrointestinal() {
 	}
 
-	public int getIdIntoleranciasAlergicas() {
-		return this.idIntoleranciasAlergicas;
+	public int getIdProblemasGastrointestinales() {
+		return this.idProblemasGastrointestinales;
 	}
 
-	public void setIdIntoleranciasAlergicas(int idIntoleranciasAlergicas) {
-		this.idIntoleranciasAlergicas = idIntoleranciasAlergicas;
+	public void setIdProblemasGastrointestinales(int idProblemasGastrointestinales) {
+		this.idProblemasGastrointestinales = idProblemasGastrointestinales;
 	}
 
 	public String getDescripcion() {

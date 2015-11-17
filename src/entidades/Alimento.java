@@ -5,14 +5,10 @@ import javax.persistence.*;
 
 
 /**
- * El archivo contiene diferentes funciones, ya sea matematicas, de fechas etc.
+ * The persistent class for the alimento database table.
  * 
- * @FechaCreacion: 14/11/2015
- * @UsuarioCreacion: Jonathan Imbaquingo
- * @Version: 1.0
  */
 @Entity
-@Table(name="alimentos")
 @NamedQuery(name="Alimento.findAll", query="SELECT a FROM Alimento a")
 public class Alimento implements Serializable {
 	private static final long serialVersionUID = 1L;

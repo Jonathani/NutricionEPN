@@ -5,11 +5,10 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the cirugias database table.
+ * The persistent class for the cirugia database table.
  * 
  */
 @Entity
-@Table(name="cirugias")
 @NamedQuery(name="Cirugia.findAll", query="SELECT c FROM Cirugia c")
 public class Cirugia implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -21,10 +20,10 @@ public class Cirugia implements Serializable {
 
 	private String descripcion;
 
-	//bi-directional many-to-one association to DatosMedico
+	//bi-directional many-to-one association to Paciente
 	@ManyToOne
-	@JoinColumn(name="ID_DATOS_MEDICOS")
-	private DatosMedico datosMedico;
+	@JoinColumn(name="ID_PACIENTE")
+	private Paciente paciente;
 
 	public Cirugia() {
 	}
@@ -45,12 +44,12 @@ public class Cirugia implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public DatosMedico getDatosMedico() {
-		return this.datosMedico;
+	public Paciente getPaciente() {
+		return this.paciente;
 	}
 
-	public void setDatosMedico(DatosMedico datosMedico) {
-		this.datosMedico = datosMedico;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
 }

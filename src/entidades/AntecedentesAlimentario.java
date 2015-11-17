@@ -51,13 +51,22 @@ public class AntecedentesAlimentario implements Serializable {
 	@OneToMany(mappedBy="antecedentesAlimentario")
 	private List<Alimento> alimentos;
 
-	//bi-directional many-to-one association to IntoleranciasAlergica
-	@OneToMany(mappedBy="antecedentesAlimentario")
-	private List<IntoleranciasAlergica> intoleranciasAlergicas;
+	//bi-directional many-to-one association to Paciente
+	@ManyToOne
+	@JoinColumn(name="ID_PACIENTE")
+	private Paciente paciente;
 
-	//bi-directional many-to-one association to ProblemasGastrointestinale
+	//bi-directional many-to-one association to IntoleranciaAlergica
 	@OneToMany(mappedBy="antecedentesAlimentario")
-	private List<ProblemasGastrointestinale> problemasGastrointestinales;
+	private List<IntoleranciaAlergica> intoleranciaAlergicas;
+
+	//bi-directional many-to-one association to Paciente
+	@OneToMany(mappedBy="antecedentesAlimentario")
+	private List<Paciente> pacientes;
+
+	//bi-directional many-to-one association to ProblemaGastrointestinal
+	@OneToMany(mappedBy="antecedentesAlimentario")
+	private List<ProblemaGastrointestinal> problemaGastrointestinals;
 
 	public AntecedentesAlimentario() {
 	}
@@ -172,48 +181,78 @@ public class AntecedentesAlimentario implements Serializable {
 		return alimento;
 	}
 
-	public List<IntoleranciasAlergica> getIntoleranciasAlergicas() {
-		return this.intoleranciasAlergicas;
+	public Paciente getPaciente() {
+		return this.paciente;
 	}
 
-	public void setIntoleranciasAlergicas(List<IntoleranciasAlergica> intoleranciasAlergicas) {
-		this.intoleranciasAlergicas = intoleranciasAlergicas;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
-	public IntoleranciasAlergica addIntoleranciasAlergica(IntoleranciasAlergica intoleranciasAlergica) {
-		getIntoleranciasAlergicas().add(intoleranciasAlergica);
-		intoleranciasAlergica.setAntecedentesAlimentario(this);
-
-		return intoleranciasAlergica;
+	public List<IntoleranciaAlergica> getIntoleranciaAlergicas() {
+		return this.intoleranciaAlergicas;
 	}
 
-	public IntoleranciasAlergica removeIntoleranciasAlergica(IntoleranciasAlergica intoleranciasAlergica) {
-		getIntoleranciasAlergicas().remove(intoleranciasAlergica);
-		intoleranciasAlergica.setAntecedentesAlimentario(null);
-
-		return intoleranciasAlergica;
+	public void setIntoleranciaAlergicas(List<IntoleranciaAlergica> intoleranciaAlergicas) {
+		this.intoleranciaAlergicas = intoleranciaAlergicas;
 	}
 
-	public List<ProblemasGastrointestinale> getProblemasGastrointestinales() {
-		return this.problemasGastrointestinales;
+	public IntoleranciaAlergica addIntoleranciaAlergica(IntoleranciaAlergica intoleranciaAlergica) {
+		getIntoleranciaAlergicas().add(intoleranciaAlergica);
+		intoleranciaAlergica.setAntecedentesAlimentario(this);
+
+		return intoleranciaAlergica;
 	}
 
-	public void setProblemasGastrointestinales(List<ProblemasGastrointestinale> problemasGastrointestinales) {
-		this.problemasGastrointestinales = problemasGastrointestinales;
+	public IntoleranciaAlergica removeIntoleranciaAlergica(IntoleranciaAlergica intoleranciaAlergica) {
+		getIntoleranciaAlergicas().remove(intoleranciaAlergica);
+		intoleranciaAlergica.setAntecedentesAlimentario(null);
+
+		return intoleranciaAlergica;
 	}
 
-	public ProblemasGastrointestinale addProblemasGastrointestinale(ProblemasGastrointestinale problemasGastrointestinale) {
-		getProblemasGastrointestinales().add(problemasGastrointestinale);
-		problemasGastrointestinale.setAntecedentesAlimentario(this);
-
-		return problemasGastrointestinale;
+	public List<Paciente> getPacientes() {
+		return this.pacientes;
 	}
 
-	public ProblemasGastrointestinale removeProblemasGastrointestinale(ProblemasGastrointestinale problemasGastrointestinale) {
-		getProblemasGastrointestinales().remove(problemasGastrointestinale);
-		problemasGastrointestinale.setAntecedentesAlimentario(null);
+	public void setPacientes(List<Paciente> pacientes) {
+		this.pacientes = pacientes;
+	}
 
-		return problemasGastrointestinale;
+	public Paciente addPaciente(Paciente paciente) {
+		getPacientes().add(paciente);
+		paciente.setAntecedentesAlimentario(this);
+
+		return paciente;
+	}
+
+	public Paciente removePaciente(Paciente paciente) {
+		getPacientes().remove(paciente);
+		paciente.setAntecedentesAlimentario(null);
+
+		return paciente;
+	}
+
+	public List<ProblemaGastrointestinal> getProblemaGastrointestinals() {
+		return this.problemaGastrointestinals;
+	}
+
+	public void setProblemaGastrointestinals(List<ProblemaGastrointestinal> problemaGastrointestinals) {
+		this.problemaGastrointestinals = problemaGastrointestinals;
+	}
+
+	public ProblemaGastrointestinal addProblemaGastrointestinal(ProblemaGastrointestinal problemaGastrointestinal) {
+		getProblemaGastrointestinals().add(problemaGastrointestinal);
+		problemaGastrointestinal.setAntecedentesAlimentario(this);
+
+		return problemaGastrointestinal;
+	}
+
+	public ProblemaGastrointestinal removeProblemaGastrointestinal(ProblemaGastrointestinal problemaGastrointestinal) {
+		getProblemaGastrointestinals().remove(problemaGastrointestinal);
+		problemaGastrointestinal.setAntecedentesAlimentario(null);
+
+		return problemaGastrointestinal;
 	}
 
 }

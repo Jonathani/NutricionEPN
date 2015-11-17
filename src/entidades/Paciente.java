@@ -42,9 +42,30 @@ public class Paciente implements Serializable {
 	@Column(name="TELEFONO_PACIENTE")
 	private String telefonoPaciente;
 
+	//bi-directional many-to-one association to AntecedenteSalud
+	@OneToMany(mappedBy="paciente")
+	private List<AntecedenteSalud> antecedenteSaluds;
+
+	//bi-directional many-to-one association to AntecedentesAlimentario
+	@OneToMany(mappedBy="paciente")
+	private List<AntecedentesAlimentario> antecedentesAlimentarios;
+
+	//bi-directional many-to-one association to Cirugia
+	@OneToMany(mappedBy="paciente")
+	private List<Cirugia> cirugias;
+
+	//bi-directional many-to-one association to FamiliarPaciente
+	@OneToMany(mappedBy="paciente")
+	private List<FamiliarPaciente> familiarPacientes;
+
 	//bi-directional many-to-one association to HistoriaClinica
 	@OneToMany(mappedBy="paciente")
 	private List<HistoriaClinica> historiaClinicas;
+
+	//bi-directional many-to-one association to AntecedentesAlimentario
+	@ManyToOne
+	@JoinColumn(name="ID_ANTECEDENTES_ALIMENTARIOS")
+	private AntecedentesAlimentario antecedentesAlimentario;
 
 	public Paciente() {
 	}
@@ -113,6 +134,94 @@ public class Paciente implements Serializable {
 		this.telefonoPaciente = telefonoPaciente;
 	}
 
+	public List<AntecedenteSalud> getAntecedenteSaluds() {
+		return this.antecedenteSaluds;
+	}
+
+	public void setAntecedenteSaluds(List<AntecedenteSalud> antecedenteSaluds) {
+		this.antecedenteSaluds = antecedenteSaluds;
+	}
+
+	public AntecedenteSalud addAntecedenteSalud(AntecedenteSalud antecedenteSalud) {
+		getAntecedenteSaluds().add(antecedenteSalud);
+		antecedenteSalud.setPaciente(this);
+
+		return antecedenteSalud;
+	}
+
+	public AntecedenteSalud removeAntecedenteSalud(AntecedenteSalud antecedenteSalud) {
+		getAntecedenteSaluds().remove(antecedenteSalud);
+		antecedenteSalud.setPaciente(null);
+
+		return antecedenteSalud;
+	}
+
+	public List<AntecedentesAlimentario> getAntecedentesAlimentarios() {
+		return this.antecedentesAlimentarios;
+	}
+
+	public void setAntecedentesAlimentarios(List<AntecedentesAlimentario> antecedentesAlimentarios) {
+		this.antecedentesAlimentarios = antecedentesAlimentarios;
+	}
+
+	public AntecedentesAlimentario addAntecedentesAlimentario(AntecedentesAlimentario antecedentesAlimentario) {
+		getAntecedentesAlimentarios().add(antecedentesAlimentario);
+		antecedentesAlimentario.setPaciente(this);
+
+		return antecedentesAlimentario;
+	}
+
+	public AntecedentesAlimentario removeAntecedentesAlimentario(AntecedentesAlimentario antecedentesAlimentario) {
+		getAntecedentesAlimentarios().remove(antecedentesAlimentario);
+		antecedentesAlimentario.setPaciente(null);
+
+		return antecedentesAlimentario;
+	}
+
+	public List<Cirugia> getCirugias() {
+		return this.cirugias;
+	}
+
+	public void setCirugias(List<Cirugia> cirugias) {
+		this.cirugias = cirugias;
+	}
+
+	public Cirugia addCirugia(Cirugia cirugia) {
+		getCirugias().add(cirugia);
+		cirugia.setPaciente(this);
+
+		return cirugia;
+	}
+
+	public Cirugia removeCirugia(Cirugia cirugia) {
+		getCirugias().remove(cirugia);
+		cirugia.setPaciente(null);
+
+		return cirugia;
+	}
+
+	public List<FamiliarPaciente> getFamiliarPacientes() {
+		return this.familiarPacientes;
+	}
+
+	public void setFamiliarPacientes(List<FamiliarPaciente> familiarPacientes) {
+		this.familiarPacientes = familiarPacientes;
+	}
+
+	public FamiliarPaciente addFamiliarPaciente(FamiliarPaciente familiarPaciente) {
+		getFamiliarPacientes().add(familiarPaciente);
+		familiarPaciente.setPaciente(this);
+
+		return familiarPaciente;
+	}
+
+	public FamiliarPaciente removeFamiliarPaciente(FamiliarPaciente familiarPaciente) {
+		getFamiliarPacientes().remove(familiarPaciente);
+		familiarPaciente.setPaciente(null);
+
+		return familiarPaciente;
+	}
+
 	public List<HistoriaClinica> getHistoriaClinicas() {
 		return this.historiaClinicas;
 	}
@@ -133,6 +242,14 @@ public class Paciente implements Serializable {
 		historiaClinica.setPaciente(null);
 
 		return historiaClinica;
+	}
+
+	public AntecedentesAlimentario getAntecedentesAlimentario() {
+		return this.antecedentesAlimentario;
+	}
+
+	public void setAntecedentesAlimentario(AntecedentesAlimentario antecedentesAlimentario) {
+		this.antecedentesAlimentario = antecedentesAlimentario;
 	}
 
 }

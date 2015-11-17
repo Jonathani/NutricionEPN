@@ -32,31 +32,14 @@ public class DatosMedico implements Serializable {
 	@Column(name="REALIZA_EJERCICIO")
 	private byte realizaEjercicio;
 
-	//bi-directional many-to-one association to AntecedenteSalud
-	@OneToMany(mappedBy="datosMedico")
-	private List<AntecedenteSalud> antecedenteSaluds;
-
 	//bi-directional many-to-one association to Antropometria
 	@OneToMany(mappedBy="datosMedico")
 	private List<Antropometria> antropometrias;
-
-	//bi-directional many-to-one association to Cirugia
-	@OneToMany(mappedBy="datosMedico")
-	private List<Cirugia> cirugias;
-
-	//bi-directional many-to-one association to PatologiasAsociada
-	@ManyToOne
-	@JoinColumn(name="ID_PATOLOGIAS_ASOCIADAS")
-	private PatologiasAsociada patologiasAsociada;
 
 	//bi-directional many-to-one association to Antropometria
 	@ManyToOne
 	@JoinColumn(name="ID_ANTROPOMETRIA")
 	private Antropometria antropometria;
-
-	//bi-directional many-to-one association to FamiliarPaciente
-	@OneToMany(mappedBy="datosMedico")
-	private List<FamiliarPaciente> familiarPacientes;
 
 	//bi-directional many-to-one association to HistoriaClinica
 	@OneToMany(mappedBy="datosMedico")
@@ -66,9 +49,9 @@ public class DatosMedico implements Serializable {
 	@OneToMany(mappedBy="datosMedico")
 	private List<Medicamento> medicamentos;
 
-	//bi-directional many-to-one association to PatologiasAsociada
+	//bi-directional many-to-one association to PatologiaAsociada
 	@OneToMany(mappedBy="datosMedico")
-	private List<PatologiasAsociada> patologiasAsociadas;
+	private List<PatologiaAsociada> patologiaAsociadas;
 
 	//bi-directional many-to-one association to SuplementoNutricional
 	@OneToMany(mappedBy="datosMedico")
@@ -117,28 +100,6 @@ public class DatosMedico implements Serializable {
 		this.realizaEjercicio = realizaEjercicio;
 	}
 
-	public List<AntecedenteSalud> getAntecedenteSaluds() {
-		return this.antecedenteSaluds;
-	}
-
-	public void setAntecedenteSaluds(List<AntecedenteSalud> antecedenteSaluds) {
-		this.antecedenteSaluds = antecedenteSaluds;
-	}
-
-	public AntecedenteSalud addAntecedenteSalud(AntecedenteSalud antecedenteSalud) {
-		getAntecedenteSaluds().add(antecedenteSalud);
-		antecedenteSalud.setDatosMedico(this);
-
-		return antecedenteSalud;
-	}
-
-	public AntecedenteSalud removeAntecedenteSalud(AntecedenteSalud antecedenteSalud) {
-		getAntecedenteSaluds().remove(antecedenteSalud);
-		antecedenteSalud.setDatosMedico(null);
-
-		return antecedenteSalud;
-	}
-
 	public List<Antropometria> getAntropometrias() {
 		return this.antropometrias;
 	}
@@ -161,64 +122,12 @@ public class DatosMedico implements Serializable {
 		return antropometria;
 	}
 
-	public List<Cirugia> getCirugias() {
-		return this.cirugias;
-	}
-
-	public void setCirugias(List<Cirugia> cirugias) {
-		this.cirugias = cirugias;
-	}
-
-	public Cirugia addCirugia(Cirugia cirugia) {
-		getCirugias().add(cirugia);
-		cirugia.setDatosMedico(this);
-
-		return cirugia;
-	}
-
-	public Cirugia removeCirugia(Cirugia cirugia) {
-		getCirugias().remove(cirugia);
-		cirugia.setDatosMedico(null);
-
-		return cirugia;
-	}
-
-	public PatologiasAsociada getPatologiasAsociada() {
-		return this.patologiasAsociada;
-	}
-
-	public void setPatologiasAsociada(PatologiasAsociada patologiasAsociada) {
-		this.patologiasAsociada = patologiasAsociada;
-	}
-
 	public Antropometria getAntropometria() {
 		return this.antropometria;
 	}
 
 	public void setAntropometria(Antropometria antropometria) {
 		this.antropometria = antropometria;
-	}
-
-	public List<FamiliarPaciente> getFamiliarPacientes() {
-		return this.familiarPacientes;
-	}
-
-	public void setFamiliarPacientes(List<FamiliarPaciente> familiarPacientes) {
-		this.familiarPacientes = familiarPacientes;
-	}
-
-	public FamiliarPaciente addFamiliarPaciente(FamiliarPaciente familiarPaciente) {
-		getFamiliarPacientes().add(familiarPaciente);
-		familiarPaciente.setDatosMedico(this);
-
-		return familiarPaciente;
-	}
-
-	public FamiliarPaciente removeFamiliarPaciente(FamiliarPaciente familiarPaciente) {
-		getFamiliarPacientes().remove(familiarPaciente);
-		familiarPaciente.setDatosMedico(null);
-
-		return familiarPaciente;
 	}
 
 	public List<HistoriaClinica> getHistoriaClinicas() {
@@ -265,26 +174,26 @@ public class DatosMedico implements Serializable {
 		return medicamento;
 	}
 
-	public List<PatologiasAsociada> getPatologiasAsociadas() {
-		return this.patologiasAsociadas;
+	public List<PatologiaAsociada> getPatologiaAsociadas() {
+		return this.patologiaAsociadas;
 	}
 
-	public void setPatologiasAsociadas(List<PatologiasAsociada> patologiasAsociadas) {
-		this.patologiasAsociadas = patologiasAsociadas;
+	public void setPatologiaAsociadas(List<PatologiaAsociada> patologiaAsociadas) {
+		this.patologiaAsociadas = patologiaAsociadas;
 	}
 
-	public PatologiasAsociada addPatologiasAsociada(PatologiasAsociada patologiasAsociada) {
-		getPatologiasAsociadas().add(patologiasAsociada);
-		patologiasAsociada.setDatosMedico(this);
+	public PatologiaAsociada addPatologiaAsociada(PatologiaAsociada patologiaAsociada) {
+		getPatologiaAsociadas().add(patologiaAsociada);
+		patologiaAsociada.setDatosMedico(this);
 
-		return patologiasAsociada;
+		return patologiaAsociada;
 	}
 
-	public PatologiasAsociada removePatologiasAsociada(PatologiasAsociada patologiasAsociada) {
-		getPatologiasAsociadas().remove(patologiasAsociada);
-		patologiasAsociada.setDatosMedico(null);
+	public PatologiaAsociada removePatologiaAsociada(PatologiaAsociada patologiaAsociada) {
+		getPatologiaAsociadas().remove(patologiaAsociada);
+		patologiaAsociada.setDatosMedico(null);
 
-		return patologiasAsociada;
+		return patologiaAsociada;
 	}
 
 	public List<SuplementoNutricional> getSuplementoNutricionals() {
