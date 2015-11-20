@@ -22,23 +22,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
-import java.util.Properties;
-import java.util.StringTokenizer;
-import java.util.Vector;
 import java.util.regex.Pattern;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.CreationHelper;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.IndexedColors;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
 
 
 /**
@@ -1057,46 +1042,7 @@ public class FuncionesUtiles {
 		return new String(result);
 	}
 
-	/**
-	 * TODO: Agregar descripcion del metodo
-	 * 
-	 * @param fileName
-	 *            nombre de archivo mas extencion en donde se va almacenar
-	 * @param listaDatos
-	 *            Lista de objetos que se van a escribir en el archivo excel
-	 * @param numeroColumnas
-	 *            Numero de columnas que se van a escribir
-	 */
-	public static void crearExcel(String fileName, List<Object[]> listaDatos,
-			int numeroColumnas) {
-
-		List<Object[]> excelData = listaDatos;
-
-		HSSFWorkbook myWorkBook = new HSSFWorkbook();
-		HSSFSheet mySheet = myWorkBook.createSheet();
-		HSSFRow myRow = null;
-		HSSFCell myCell = null;
-
-		int rowNum = 0;
-		for (Object[] object : excelData) {
-			myRow = mySheet.createRow(rowNum);
-			for (int cellNum = 0; cellNum < numeroColumnas; cellNum++) {
-				myCell = myRow.createCell(cellNum);
-				myCell.setCellValue(object[cellNum].toString());
-			}
-			rowNum++;
-		}
-
-		try {
-			FileOutputStream out = new FileOutputStream(fileName);
-			myWorkBook.write(out);
-			out.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-
+	
 	public static BigDecimal porcentaje(BigDecimal base, BigDecimal pct,
 			int decimales) {
 		return redondearBigDecimal(base.multiply(pct).divide(CIEN), decimales);
@@ -1153,26 +1099,7 @@ public class FuncionesUtiles {
 		return age;
 	}
 
-	/**
-	 * Para escribir el contenido de una celda.
-	 * 
-	 * @param row
-	 *            Row.
-	 * @param i
-	 *            posicion en la fila.
-	 * @param value
-	 *            texto a escribir.
-	 * @param style
-	 *            estilo de la celda.
-	 */
-	public static void createCell(Row row, int i, String value, CellStyle style) {
-		Cell cell = row.createCell(i);
-		cell.setCellValue(value);
-		// si no hay estilo, no se aplica
-		if (style != null)
-			cell.setCellStyle(style);
-	}
-
+	
 	/**
 	 * Crea una hoja Excel con el contenido especificado.
 	 * 
@@ -1183,71 +1110,7 @@ public class FuncionesUtiles {
 	 * @param filename
 	 *            path del fichero donde se escribe.
 	 */
-	@SuppressWarnings({ "rawtypes", "unused" })
-	public static void crearExcel(Vector v, String namesheet,
-			String directorioArchivo, String filename) throws Exception {
-		try {
-
-			File directorio = new File(directorioArchivo);
-			if (!directorio.exists()) {
-				directorio.mkdirs();
-			}
-
-			Workbook wb = new HSSFWorkbook();
-			// Workbook wb = new XSSFWorkbook();
-			CreationHelper createHelper = wb.getCreationHelper();
-			Sheet sheet = wb.createSheet(namesheet);
-			int filas = v.size();
-			for (int i = 0; i < filas; i++) {
-				String fila = (String) v.elementAt(i);
-				StringTokenizer st = new StringTokenizer(fila, ",");
-				Row row = sheet.createRow((short) i);
-				int j = 0;
-				while (st.hasMoreTokens()) {
-					String token = st.nextToken();
-					// para la cabecera, la primera fila, aplicamos un estilo
-					// (negrita y color de fondo azul)
-					if (i == 0) {
-						CellStyle style = wb.createCellStyle();
-						style.setFillForegroundColor(IndexedColors.BLUE_GREY
-								.getIndex());
-						style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-						Font font = wb.createFont();
-						// font.setFontHeightInPoints((short)10);
-						font.setFontName("Courier New");
-						// font.setItalic(true);
-						// font.setStrikeout(true);
-						font.setBoldweight(Font.BOLDWEIGHT_BOLD);
-						font.setColor(IndexedColors.WHITE.getIndex());
-						style.setFont(font);
-						createCell(row, j, token.trim(), style);
-					} else
-						createCell(row, j, token, null);
-
-					j = j + 1;
-
-				}
-
-			}
-
-			// Asignar automaticamente el tama�o de las celdas en funcion del
-			// contenido
-			for (int i = 0; i < filas; i++) {
-				sheet.autoSizeColumn((short) i);
-			}
-
-			// Escribir el fichero.
-			FileOutputStream fileOut = new FileOutputStream(directorioArchivo
-					+ filename);
-			wb.write(fileOut);
-			fileOut.close();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
+		/**
 	 * Devuelve el numero de horas entre dos horas
 	 * 
 	 * @param horaInicial

@@ -1,12 +1,12 @@
-package ec.edu.epn.nutricion.servicio.impl;
+package ec.edu.epn.nutricion.model.servicio.impl;
 
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import ec.edu.epn.nutricion.dao.GenericoDao;
-import ec.edu.epn.nutricion.servicio.ServicioGenerico;
+import ec.edu.epn.nutricion.model.dao.GenericoDao;
+import ec.edu.epn.nutricion.model.servicio.ServicioGenerico;
 
 
 @Stateless

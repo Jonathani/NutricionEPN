@@ -1,8 +1,18 @@
 package entidades;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
 /**
@@ -11,14 +21,14 @@ import java.util.List;
  */
 @Entity
 @Table(name="antecedentes_alimentarios")
-@NamedQuery(name="AntecedentesAlimentario.findAll", query="SELECT a FROM AntecedentesAlimentario a")
-public class AntecedentesAlimentario implements Serializable {
+@NamedQuery(name="AntecedenteAlimentario.findAll", query="SELECT a FROM AntecedenteAlimentario a")
+public class AntecedenteAlimentario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_ANTECEDENTES_ALIMENTARIOS")
-	private int idAntecedentesAlimentarios;
+	@Column(name="ID_ANTECEDENTE_ALIMENTARIO")
+	private int idAntecedenteAlimentario;
 
 	@Column(name="AGUA_SOLA")
 	private int aguaSola;
@@ -48,7 +58,7 @@ public class AntecedentesAlimentario implements Serializable {
 	private int vecesAlimenta;
 
 	//bi-directional many-to-one association to Alimento
-	@OneToMany(mappedBy="antecedentesAlimentario")
+	@OneToMany(mappedBy="antecedenteAlimentario")
 	private List<Alimento> alimentos;
 
 	//bi-directional many-to-one association to Paciente
@@ -57,26 +67,26 @@ public class AntecedentesAlimentario implements Serializable {
 	private Paciente paciente;
 
 	//bi-directional many-to-one association to IntoleranciaAlergica
-	@OneToMany(mappedBy="antecedentesAlimentario")
+	@OneToMany(mappedBy="antecedenteAlimentario")
 	private List<IntoleranciaAlergica> intoleranciaAlergicas;
 
 	//bi-directional many-to-one association to Paciente
-	@OneToMany(mappedBy="antecedentesAlimentario")
+	@OneToMany(mappedBy="antecedenteAlimentario")
 	private List<Paciente> pacientes;
 
 	//bi-directional many-to-one association to ProblemaGastrointestinal
-	@OneToMany(mappedBy="antecedentesAlimentario")
+	@OneToMany(mappedBy="antecedenteAlimentario")
 	private List<ProblemaGastrointestinal> problemaGastrointestinals;
 
-	public AntecedentesAlimentario() {
+	public AntecedenteAlimentario() {
 	}
 
 	public int getIdAntecedentesAlimentarios() {
-		return this.idAntecedentesAlimentarios;
+		return this.idAntecedenteAlimentario;
 	}
 
 	public void setIdAntecedentesAlimentarios(int idAntecedentesAlimentarios) {
-		this.idAntecedentesAlimentarios = idAntecedentesAlimentarios;
+		this.idAntecedenteAlimentario= idAntecedentesAlimentarios;
 	}
 
 	public int getAguaSola() {

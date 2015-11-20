@@ -1,4 +1,4 @@
-package ec.edu.epn.nutricion.servicio;
+package ec.edu.epn.nutricion.model.servicio;
 
 import java.util.List;
 import java.util.Map;

@@ -15,8 +15,8 @@ public class Cirugia implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_CIRUGIAS")
-	private int idCirugias;
+	@Column(name="ID_CIRUGIA")
+	private int idCirugia;
 
 	private String descripcion;
 
@@ -29,11 +29,11 @@ public class Cirugia implements Serializable {
 	}
 
 	public int getIdCirugias() {
-		return this.idCirugias;
+		return this.idCirugia;
 	}
 
 	public void setIdCirugias(int idCirugias) {
-		this.idCirugias = idCirugias;
+		this.idCirugia = idCirugias;
 	}
 
 	public String getDescripcion() {

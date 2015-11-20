@@ -1,4 +1,4 @@
-package ec.edu.epn.nutricion.db;
+package ec.edu.epn.nutricion.model.db;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -1,4 +1,4 @@
-package ec.edu.epn.nutricion.dao;
+package ec.edu.epn.nutricion.model.dao;
 
 import javax.ejb.Stateless;
 

@@ -1,10 +1,10 @@
-package ec.edu.epn.nutricion.dao;
+package ec.edu.epn.nutricion.model.dao;
 
 import java.util.List;
 
 import javax.persistence.Query;
 
-import ec.edu.epn.nutricion.db.NutricionDBBase;
+import ec.edu.epn.nutricion.model.db.NutricionDBBase;
 
 /**
  * Dao Abstracto

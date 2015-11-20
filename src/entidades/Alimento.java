@@ -15,8 +15,8 @@ public class Alimento implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_ALIMENTOS")
-	private int idAlimentos;
+	@Column(name="ID_ALIMENTO")
+	private int idAlimento;
 
 	@Column(name="DESCRIPCION_ALIMENTO")
 	private String descripcionAlimento;
@@ -24,20 +24,20 @@ public class Alimento implements Serializable {
 	@Column(name="NOMBRE_ALIMENTO")
 	private String nombreAlimento;
 
-	//bi-directional many-to-one association to AntecedentesAlimentario
+	//bi-directional many-to-one association to AntecedenteAlimentario
 	@ManyToOne
-	@JoinColumn(name="ID_ANTECEDENTES_ALIMENTARIOS")
-	private AntecedentesAlimentario antecedentesAlimentario;
+	@JoinColumn(name="ID_ANTECEDENTE_ALIMENTARIO")
+	private AntecedenteAlimentario antecedenteAlimentario;
 
 	public Alimento() {
 	}
 
 	public int getIdAlimentos() {
-		return this.idAlimentos;
+		return this.idAlimento;
 	}
 
 	public void setIdAlimentos(int idAlimentos) {
-		this.idAlimentos = idAlimentos;
+		this.idAlimento = idAlimentos;
 	}
 
 	public String getDescripcionAlimento() {
@@ -56,12 +56,12 @@ public class Alimento implements Serializable {
 		this.nombreAlimento = nombreAlimento;
 	}
 
-	public AntecedentesAlimentario getAntecedentesAlimentario() {
-		return this.antecedentesAlimentario;
+	public AntecedenteAlimentario getAntecedentesAlimentario() {
+		return this.antecedenteAlimentario;
 	}
 
-	public void setAntecedentesAlimentario(AntecedentesAlimentario antecedentesAlimentario) {
-		this.antecedentesAlimentario = antecedentesAlimentario;
+	public void setAntecedentesAlimentario(AntecedenteAlimentario antecedenteAlimentario) {
+		this.antecedenteAlimentario = antecedenteAlimentario;
 	}
 
 }

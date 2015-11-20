@@ -46,9 +46,9 @@ public class Paciente implements Serializable {
 	@OneToMany(mappedBy="paciente")
 	private List<AntecedenteSalud> antecedenteSaluds;
 
-	//bi-directional many-to-one association to AntecedentesAlimentario
+	//bi-directional many-to-one association to AntecedenteAlimentario
 	@OneToMany(mappedBy="paciente")
-	private List<AntecedentesAlimentario> antecedentesAlimentarios;
+	private List<AntecedenteAlimentario> antecedenteAlimentarios;
 
 	//bi-directional many-to-one association to Cirugia
 	@OneToMany(mappedBy="paciente")
@@ -62,10 +62,10 @@ public class Paciente implements Serializable {
 	@OneToMany(mappedBy="paciente")
 	private List<HistoriaClinica> historiaClinicas;
 
-	//bi-directional many-to-one association to AntecedentesAlimentario
+	//bi-directional many-to-one association to AntecedenteAlimentario
 	@ManyToOne
 	@JoinColumn(name="ID_ANTECEDENTES_ALIMENTARIOS")
-	private AntecedentesAlimentario antecedentesAlimentario;
+	private AntecedenteAlimentario antecedenteAlimentario;
 
 	public Paciente() {
 	}
@@ -156,26 +156,26 @@ public class Paciente implements Serializable {
 		return antecedenteSalud;
 	}
 
-	public List<AntecedentesAlimentario> getAntecedentesAlimentarios() {
-		return this.antecedentesAlimentarios;
+	public List<AntecedenteAlimentario> getAntecedentesAlimentarios() {
+		return this.antecedenteAlimentarios;
 	}
 
-	public void setAntecedentesAlimentarios(List<AntecedentesAlimentario> antecedentesAlimentarios) {
-		this.antecedentesAlimentarios = antecedentesAlimentarios;
+	public void setAntecedentesAlimentarios(List<AntecedenteAlimentario> antecedenteAlimentarios) {
+		this.antecedenteAlimentarios = antecedenteAlimentarios;
 	}
 
-	public AntecedentesAlimentario addAntecedentesAlimentario(AntecedentesAlimentario antecedentesAlimentario) {
-		getAntecedentesAlimentarios().add(antecedentesAlimentario);
-		antecedentesAlimentario.setPaciente(this);
+	public AntecedenteAlimentario addAntecedentesAlimentario(AntecedenteAlimentario antecedenteAlimentario) {
+		getAntecedentesAlimentarios().add(antecedenteAlimentario);
+		antecedenteAlimentario.setPaciente(this);
 
-		return antecedentesAlimentario;
+		return antecedenteAlimentario;
 	}
 
-	public AntecedentesAlimentario removeAntecedentesAlimentario(AntecedentesAlimentario antecedentesAlimentario) {
-		getAntecedentesAlimentarios().remove(antecedentesAlimentario);
-		antecedentesAlimentario.setPaciente(null);
+	public AntecedenteAlimentario removeAntecedentesAlimentario(AntecedenteAlimentario antecedenteAlimentario) {
+		getAntecedentesAlimentarios().remove(antecedenteAlimentario);
+		antecedenteAlimentario.setPaciente(null);
 
-		return antecedentesAlimentario;
+		return antecedenteAlimentario;
 	}
 
 	public List<Cirugia> getCirugias() {
@@ -244,12 +244,12 @@ public class Paciente implements Serializable {
 		return historiaClinica;
 	}
 
-	public AntecedentesAlimentario getAntecedentesAlimentario() {
-		return this.antecedentesAlimentario;
+	public AntecedenteAlimentario getAntecedentesAlimentario() {
+		return this.antecedenteAlimentario;
 	}
 
-	public void setAntecedentesAlimentario(AntecedentesAlimentario antecedentesAlimentario) {
-		this.antecedentesAlimentario = antecedentesAlimentario;
+	public void setAntecedentesAlimentario(AntecedenteAlimentario antecedenteAlimentario) {
+		this.antecedenteAlimentario = antecedenteAlimentario;
 	}
 
 }
