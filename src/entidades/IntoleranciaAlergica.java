@@ -16,25 +16,25 @@ public class IntoleranciaAlergica implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_INTOLERANCIA_ALERGICA")
-	private int idIntoleranciaAlergica;
+	@Column(name="ID_INTOLERANCIAS_ALERGICAS")
+	private int idIntoleranciasAlergicas;
 
 	private String descripcion;
 
-	//bi-directional many-to-one association to AntecedenteAlimentario
+	//bi-directional many-to-one association to AntecedentesAlimentario
 	@ManyToOne
 	@JoinColumn(name="ID_ANTECEDENTES_ALIMENTARIOS")
-	private AntecedenteAlimentario antecedenteAlimentario;
+	private AntecedentesAlimentario antecedentesAlimentario;
 
 	public IntoleranciaAlergica() {
 	}
 
 	public int getIdIntoleranciasAlergicas() {
-		return this.idIntoleranciaAlergica;
+		return this.idIntoleranciasAlergicas;
 	}
 
 	public void setIdIntoleranciasAlergicas(int idIntoleranciasAlergicas) {
-		this.idIntoleranciaAlergica = idIntoleranciasAlergicas;
+		this.idIntoleranciasAlergicas = idIntoleranciasAlergicas;
 	}
 
 	public String getDescripcion() {
@@ -45,12 +45,12 @@ public class IntoleranciaAlergica implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public AntecedenteAlimentario getAntecedentesAlimentario() {
-		return this.antecedenteAlimentario;
+	public AntecedentesAlimentario getAntecedentesAlimentario() {
+		return this.antecedentesAlimentario;
 	}
 
-	public void setAntecedentesAlimentario(AntecedenteAlimentario antecedenteAlimentario) {
-		this.antecedenteAlimentario = antecedenteAlimentario;
+	public void setAntecedentesAlimentario(AntecedentesAlimentario antecedentesAlimentario) {
+		this.antecedentesAlimentario = antecedentesAlimentario;
 	}
 
 }

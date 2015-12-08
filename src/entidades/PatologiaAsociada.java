@@ -16,8 +16,8 @@ public class PatologiaAsociada implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_PATOLOGIA_ASOCIADA")
-	private int idPatologiaAsociada;
+	@Column(name="ID_PATOLOGIAS_ASOCIADAS")
+	private int idPatologiasAsociadas;
 
 	@Column(name="DESCRIPCION_PATOLOGIA")
 	private String descripcionPatologia;
@@ -39,11 +39,11 @@ public class PatologiaAsociada implements Serializable {
 	}
 
 	public int getIdPatologiasAsociadas() {
-		return this.idPatologiaAsociada;
+		return this.idPatologiasAsociadas;
 	}
 
 	public void setIdPatologiasAsociadas(int idPatologiasAsociadas) {
-		this.idPatologiaAsociada = idPatologiasAsociadas;
+		this.idPatologiasAsociadas = idPatologiasAsociadas;
 	}
 
 	public String getDescripcionPatologia() {

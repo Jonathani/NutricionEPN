@@ -34,7 +34,7 @@ public class DatosMedico implements Serializable {
 
 	//bi-directional many-to-one association to Antropometria
 	@OneToMany(mappedBy="datosMedico")
-	private List<Antropometria> listAntropometria;
+	private List<Antropometria> antropometrias;
 
 	//bi-directional many-to-one association to Antropometria
 	@ManyToOne
@@ -101,11 +101,11 @@ public class DatosMedico implements Serializable {
 	}
 
 	public List<Antropometria> getAntropometrias() {
-		return this.listAntropometria;
+		return this.antropometrias;
 	}
 
 	public void setAntropometrias(List<Antropometria> antropometrias) {
-		this.listAntropometria = antropometrias;
+		this.antropometrias = antropometrias;
 	}
 
 	public Antropometria addAntropometria(Antropometria antropometria) {

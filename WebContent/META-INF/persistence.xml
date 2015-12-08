@@ -12,11 +12,11 @@
 		<class>entidades.DatosMedico</class>
 		<class>entidades.FamiliarPaciente</class>
 		<class>entidades.HistoriaClinica</class>
-		<class>entidades.IntoleranciasAlergica</class>
+		<class>entidades.IntoleranciaAlergica</class>
 		<class>entidades.Medicamento</class>
 		<class>entidades.Paciente</class>
-		<class>entidades.PatologiasAsociada</class>
-		<class>entidades.ProblemasGastrointestinale</class>
+		<class>entidades.PatologiaAsociada</class>
+		<class>entidades.ProblemaGastrointestinal</class>
 		<class>entidades.SuplementoNutricional</class>
 
 		<properties>

@@ -16,25 +16,25 @@ public class ProblemaGastrointestinal implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_PROBLEMA_GASTROINTESTINAL")
-	private int idProblemaGastrointestinal;
+	@Column(name="ID_PROBLEMAS_GASTROINTESTINALES")
+	private int idProblemasGastrointestinales;
 
 	private String descripcion;
 
-	//bi-directional many-to-one association to AntecedenteAlimentario
+	//bi-directional many-to-one association to AntecedentesAlimentario
 	@ManyToOne
-	@JoinColumn(name="ID_ANTECEDENTE_ALIMENTARIO")
-	private AntecedenteAlimentario antecedenteAlimentario;
+	@JoinColumn(name="ID_ANTECEDENTES_ALIMENTARIOS")
+	private AntecedentesAlimentario antecedentesAlimentario;
 
 	public ProblemaGastrointestinal() {
 	}
 
 	public int getIdProblemasGastrointestinales() {
-		return this.idProblemaGastrointestinal;
+		return this.idProblemasGastrointestinales;
 	}
 
 	public void setIdProblemasGastrointestinales(int idProblemasGastrointestinales) {
-		this.idProblemaGastrointestinal = idProblemasGastrointestinales;
+		this.idProblemasGastrointestinales = idProblemasGastrointestinales;
 	}
 
 	public String getDescripcion() {
@@ -45,12 +45,12 @@ public class ProblemaGastrointestinal implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public AntecedenteAlimentario getAntecedentesAlimentario() {
-		return this.antecedenteAlimentario;
+	public AntecedentesAlimentario getAntecedentesAlimentario() {
+		return this.antecedentesAlimentario;
 	}
 
-	public void setAntecedentesAlimentario(AntecedenteAlimentario antecedenteAlimentario) {
-		this.antecedenteAlimentario = antecedenteAlimentario;
+	public void setAntecedentesAlimentario(AntecedentesAlimentario antecedentesAlimentario) {
+		this.antecedentesAlimentario = antecedentesAlimentario;
 	}
 
 }
